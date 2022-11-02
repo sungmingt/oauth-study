@@ -33,11 +33,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         System.out.println("권한이 필요한 url 요청");
 
-        ///////////여기서 헤더를 가져오지 못하는 듯 함.
-        ////redirect 시 Authorization 헤더가 사라짐. CORS/redirect issue
-        // Authorization 헤더를 받는 url은 google?state... 이다. 아마 다른 Origin이라 헤더값이 사라지는 듯 하다. redirect를 다른방식으로 이용...?
-        //세션 사용 시 오류 해결. 하지만 jwt 사용 시 세션은 STATELESS 하는데...
-
         String jwtHeader = request.getHeader("Authorization");
 
         if (jwtHeader == null || !jwtHeader.startsWith("Bearer ")) {

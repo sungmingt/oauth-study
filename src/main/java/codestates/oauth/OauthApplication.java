@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class OauthApplication {
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -14,5 +15,4 @@ public class OauthApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OauthApplication.class, args);
 	}
-
 }

@@ -11,8 +11,8 @@ import java.util.Collection;
 import java.util.Map;
 
 @Data  //추가
-//스프링 시큐리티 세션 정보는 단 1가지 타입인 Authentication 객체만 가지고 있을 수 있습니다.
-//일반 로그인 → PrincipalDetails (implements UserDeatils)
+//스프링 시큐리티 세션 정보는 단 1가지 타입인 Authentication 객체만 가지고 있을 수 있다.
+//일반 로그인 → PrincipalDetails (implements UserDetails)
 //OAuth 로그인 → OAuth2User
 //위와 같이 진행될 시 로그인 User 처리가 불편하게 된다. => 그래서 OAuth 유저도 PrincipalDetails로 묶으면 된다.
 public class PrincipalDetails implements UserDetails, OAuth2User {  //추가

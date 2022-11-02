@@ -3,6 +3,7 @@ package codestates.oauth.controller;
 import codestates.oauth.auth.PrincipalDetails;
 import codestates.oauth.model.Member;
 import codestates.oauth.repository.MemberRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,13 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@Slf4j
 public class IndexController {
 
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
     private PasswordEncoder bCryptPasswordEncoder;
-
 
 //    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/")
@@ -100,10 +101,9 @@ public class IndexController {
     }
 
 
-    @GetMapping("/loginTest3")///////////////////////////////////////////////
-    public @ResponseBody String loginOAuthTest(
-            Authentication authentication,
-            @AuthenticationPrincipal OAuth2User oauth) { //로그인된 유저의 Principal을 가져올 수 있도록 해주는 애노테이션
+    @GetMapping("/loginTest3")////
+    public @ResponseBody String loginOAuthTest(Authentication authentication,
+                                               @AuthenticationPrincipal OAuth2User oauth) { //로그인된 유저의 Principal을 가져올 수 있도록 해주는 애노테이션
 
         System.out.println("===========/loginOAuthTest===========");
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();

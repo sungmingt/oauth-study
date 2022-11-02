@@ -16,13 +16,12 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     @Autowired
     private MemberRepository memberRepository;
 
-    @Override  //구글로부터 받은 userRequest 데이터에 대한 후처리 로직이다.
+    @Override  //구글로부터 받은 userRequest 데이터에 대한 후처리 로직
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-
         OAuth2User oAuth2User = super.loadUser(userRequest);
 
         //서비스 제공업체를 반환 (google, naver 등)
-//        String registrationId = userRequest.getClientRegistration().getRegistrationId();
+        //String registrationId = userRequest.getClientRegistration().getRegistrationId();
         String provider = userRequest.getClientRegistration().getClientId();
         String providerId = oAuth2User.getAttribute("sub");
         String username = oAuth2User.getAttribute("name");
@@ -34,7 +33,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         if (memberEntity == null) {
 
             //OAuth로 처음 로그인한 경우 => 회원가입 처리
-            //null이 아닌 경우에는 DB에 이미 존재하는 회원이기 때문에 별도 처리를 하지 않는다.
+            //null이 아닌 경우에는 DB에 이미 존재하는 회원이기 때문에 별도 처리를 하지 않음.
             memberEntity = Member.builder()
                     .username(username)
                     .email(email)

@@ -43,8 +43,6 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
 
         System.out.println("토큰 발급 완료");
 
-        //sendRedirect는 redirect page로 커스텀 header를 전송할 수 없다.....
-
         response.sendRedirect("/");
     }
 }

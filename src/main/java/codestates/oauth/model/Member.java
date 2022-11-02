@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@NoArgsConstructor  //추가
+@NoArgsConstructor
 public class Member {
 
     @Id
@@ -24,10 +24,10 @@ public class Member {
     private String role;
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    private String provider;  //추가
-    private String providerId;  //추가
+    private String provider;
+    private String providerId;
 
-    @Builder  //추가
+    @Builder
     public Member(String username, String email, String role, String provider, String providerId) {
         this.username = username;
         this.email = email;
